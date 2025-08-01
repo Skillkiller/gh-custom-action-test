@@ -27268,6 +27268,9 @@ async function wait(milliseconds) {
 async function run() {
     try {
         const ms = coreExports.getInput('milliseconds');
+        var artifactName = 'ma-' + process.env.GITHUB_JOB + '';
+        coreExports.debug('artifactName: ' + artifactName);
+        coreExports.debug('ENV: ' + process.env);
         // Debug logs are only output if the `ACTIONS_STEP_DEBUG` secret is true
         coreExports.debug(`Waiting ${ms} milliseconds ...`);
         // Log the current timestamp, wait, then log the new timestamp
