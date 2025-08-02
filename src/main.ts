@@ -25,7 +25,7 @@ export async function run(): Promise<void> {
 
     core.info(`matrix-key: ${matrixKey}`)
 
-    var artifactName: string = 'MO-' + jobName + '-' + matrixKeyInput + '.json'
+    var artifactName: string = 'MO-' + jobName + '-' + matrixKey + '.json'
 
     core.info('artifactName: ' + artifactName)
 

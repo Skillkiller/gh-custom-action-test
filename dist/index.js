@@ -27276,7 +27276,7 @@ async function run() {
             ? matrixKeyInput
             : generateRandomKey(4); // 8 Hex-Zeichen als Zufall
         coreExports.info(`matrix-key: ${matrixKey}`);
-        var artifactName = 'MO-' + jobName + '-' + matrixKeyInput + '.json';
+        var artifactName = 'MO-' + jobName + '-' + matrixKey + '.json';
         coreExports.info('artifactName: ' + artifactName);
         coreExports.debug(`ENV: ${JSON.stringify(process.env, null, 2)}`);
         // Debug logs are only output if the `ACTIONS_STEP_DEBUG` secret is true
