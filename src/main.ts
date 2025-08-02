@@ -11,7 +11,9 @@ export async function run(): Promise<void> {
   try {
     const ms: string = core.getInput('milliseconds')
 
-    core.info('Job Name: ' + core.getInput('job-name'))
+    const jobName = core.getInput('job-name')
+
+    core.info('Job Name: ' + jobName)
 
     const matrixKeyInput = core.getInput('matrix-key') // Optionaler Input
 
@@ -23,9 +25,9 @@ export async function run(): Promise<void> {
 
     core.info(`matrix-key: ${matrixKey}`)
 
-    var artifactName: string = 'mo-' + process.env.GITHUB_JOB + ''
+    var artifactName: string = 'MO-' + jobName + '-' + matrixKeyInput + '.json'
 
-    core.debug('artifactName: ' + artifactName)
+    core.info('artifactName: ' + artifactName)
 
     core.debug(`ENV: ${JSON.stringify(process.env, null, 2)}`)
 

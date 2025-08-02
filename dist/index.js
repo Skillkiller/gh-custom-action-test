@@ -27268,15 +27268,16 @@ async function wait(milliseconds) {
 async function run() {
     try {
         const ms = coreExports.getInput('milliseconds');
-        coreExports.info('Job Name: ' + coreExports.getInput('job-name'));
+        const jobName = coreExports.getInput('job-name');
+        coreExports.info('Job Name: ' + jobName);
         const matrixKeyInput = coreExports.getInput('matrix-key'); // Optionaler Input
         // Prüfen ob matrix-key gesetzt wurde (nicht leer)
         const matrixKey = matrixKeyInput && matrixKeyInput.trim() !== ''
             ? matrixKeyInput
             : generateRandomKey(4); // 8 Hex-Zeichen als Zufall
         coreExports.info(`matrix-key: ${matrixKey}`);
-        var artifactName = 'mo-' + process.env.GITHUB_JOB + '';
-        coreExports.debug('artifactName: ' + artifactName);
+        var artifactName = 'MO-' + jobName + '-' + matrixKeyInput + '.json';
+        coreExports.info('artifactName: ' + artifactName);
         coreExports.debug(`ENV: ${JSON.stringify(process.env, null, 2)}`);
         // Debug logs are only output if the `ACTIONS_STEP_DEBUG` secret is true
         coreExports.debug(`Waiting ${ms} milliseconds ...`);
