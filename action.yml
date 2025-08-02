@@ -17,6 +17,8 @@ inputs:
     default: ${{ github.job }}
   matrix-key:
     required: false
+  data:
+    required: true
 
 # Define your outputs here.
 outputs:

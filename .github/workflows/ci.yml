@@ -61,6 +61,7 @@ jobs:
         uses: ./
         with:
           milliseconds: 2000
+          data: ${{ matrix.color }}
 
       - name: Print Output
         id: output

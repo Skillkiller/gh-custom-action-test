@@ -1,6 +1,7 @@
 import * as core from '@actions/core'
 import { wait } from './wait.js'
 import crypto from 'crypto'
+import * as YAML from 'yaml'
 
 /**
  * The main function for the action.
@@ -30,6 +31,15 @@ export async function run(): Promise<void> {
     core.info('artifactName: ' + artifactName)
 
     core.debug(`ENV: ${JSON.stringify(process.env, null, 2)}`)
+
+    const payload = {
+      '_mo-job-name': jobName,
+      '_mo-matrix-key': matrixKey,
+      data: core.getInput('data') as unknown
+    }
+
+    core.info('PAYLOAD')
+    core.info(YAML.stringify(payload))
 
     // Debug logs are only output if the `ACTIONS_STEP_DEBUG` secret is true
     core.debug(`Waiting ${ms} milliseconds ...`)
