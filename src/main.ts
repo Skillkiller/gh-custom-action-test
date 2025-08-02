@@ -3,6 +3,7 @@ import crypto from 'crypto'
 import * as tmp from 'tmp'
 import * as fs from 'fs'
 import * as YAML from 'yaml'
+import path from 'path'
 import { DefaultArtifactClient } from '@actions/artifact'
 
 /**
@@ -49,9 +50,14 @@ export async function run(): Promise<void> {
     core.info('Tmp file: ' + tmpFile.name)
 
     const artifactClient = new DefaultArtifactClient()
-    artifactClient.uploadArtifact(artifactName, [tmpFile.name], '.', {
-      retentionDays: 1
-    })
+    artifactClient.uploadArtifact(
+      artifactName,
+      [tmpFile.name],
+      path.dirname(tmpFile.name),
+      {
+        retentionDays: 1
+      }
+    )
   } catch (error) {
     // Fail the workflow run if an error occurs
     if (error instanceof Error) core.setFailed(error.message)
