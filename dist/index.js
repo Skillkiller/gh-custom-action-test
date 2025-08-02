@@ -27269,6 +27269,12 @@ async function run() {
     try {
         const ms = coreExports.getInput('milliseconds');
         coreExports.info('Job Name: ' + coreExports.getInput('job-name'));
+        const matrixKeyInput = coreExports.getInput('matrix-key'); // Optionaler Input
+        // Prüfen ob matrix-key gesetzt wurde (nicht leer)
+        const matrixKey = matrixKeyInput && matrixKeyInput.trim() !== ''
+            ? matrixKeyInput
+            : generateRandomKey(4); // 8 Hex-Zeichen als Zufall
+        coreExports.info(`matrix-key: ${matrixKey}`);
         var artifactName = 'mo-' + process.env.GITHUB_JOB + '';
         coreExports.debug('artifactName: ' + artifactName);
         coreExports.debug(`ENV: ${JSON.stringify(process.env, null, 2)}`);
@@ -27286,6 +27292,9 @@ async function run() {
         if (error instanceof Error)
             coreExports.setFailed(error.message);
     }
+}
+function generateRandomKey(length = 8) {
+    return require$$0$1.randomBytes(length).toString('hex');
 }
 
 /**

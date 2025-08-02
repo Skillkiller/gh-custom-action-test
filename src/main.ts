@@ -1,5 +1,6 @@
 import * as core from '@actions/core'
 import { wait } from './wait.js'
+import crypto from 'crypto'
 
 /**
  * The main function for the action.
@@ -11,6 +12,16 @@ export async function run(): Promise<void> {
     const ms: string = core.getInput('milliseconds')
 
     core.info('Job Name: ' + core.getInput('job-name'))
+
+    const matrixKeyInput = core.getInput('matrix-key') // Optionaler Input
+
+    // Prüfen ob matrix-key gesetzt wurde (nicht leer)
+    const matrixKey =
+      matrixKeyInput && matrixKeyInput.trim() !== ''
+        ? matrixKeyInput
+        : generateRandomKey(4) // 8 Hex-Zeichen als Zufall
+
+    core.info(`matrix-key: ${matrixKey}`)
 
     var artifactName: string = 'mo-' + process.env.GITHUB_JOB + ''
 
@@ -32,4 +43,8 @@ export async function run(): Promise<void> {
     // Fail the workflow run if an error occurs
     if (error instanceof Error) core.setFailed(error.message)
   }
+}
+
+function generateRandomKey(length = 8): string {
+  return crypto.randomBytes(length).toString('hex')
 }
