@@ -61,6 +61,7 @@ jobs:
         uses: ./
         with:
           milliseconds: 2000
+          matrix-key: ${{ matrix.color }}
           data: ${{ matrix.color }}
 
       - name: Print Output
