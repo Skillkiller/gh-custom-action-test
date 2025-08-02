@@ -27268,6 +27268,7 @@ async function wait(milliseconds) {
 async function run() {
     try {
         const ms = coreExports.getInput('milliseconds');
+        coreExports.info('Job Name: ' + coreExports.getInput('job-name'));
         var artifactName = 'mo-' + process.env.GITHUB_JOB + '';
         coreExports.debug('artifactName: ' + artifactName);
         coreExports.debug(`ENV: ${JSON.stringify(process.env, null, 2)}`);

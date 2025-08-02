@@ -49,7 +49,7 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        color: ["Red", "Blue", "Green"]
+        color: ['Red', 'Blue', 'Green']
 
     steps:
       - name: Checkout

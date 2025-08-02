@@ -10,6 +10,8 @@ export async function run(): Promise<void> {
   try {
     const ms: string = core.getInput('milliseconds')
 
+    core.info('Job Name: ' + core.getInput('job-name'))
+
     var artifactName: string = 'mo-' + process.env.GITHUB_JOB + ''
 
     core.debug('artifactName: ' + artifactName)
