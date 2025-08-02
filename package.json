@@ -39,6 +39,7 @@
   "dependencies": {
     "@actions/artifact": "^2.3.2",
     "@actions/core": "^1.11.1",
+    "tmp": "^0.2.3",
     "yaml": "^2.8.0"
   },
   "devDependencies": {
@@ -46,10 +47,12 @@
     "@github/local-action": "^5.1.0",
     "@jest/globals": "^30.0.5",
     "@rollup/plugin-commonjs": "^28.0.6",
+    "@rollup/plugin-json": "^6.1.0",
     "@rollup/plugin-node-resolve": "^16.0.1",
     "@rollup/plugin-typescript": "^12.1.4",
     "@types/jest": "^30.0.0",
     "@types/node": "^24.1.0",
+    "@types/tmp": "^0.2.6",
     "@typescript-eslint/eslint-plugin": "^8.38.0",
     "@typescript-eslint/parser": "^8.32.1",
     "eslint": "^9.32.0",
