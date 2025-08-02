@@ -46,6 +46,8 @@ export async function run(): Promise<void> {
       encoding: 'utf-8'
     })
 
+    core.info('Tmp file: ' + tmpFile.name)
+
     const artifactClient = new DefaultArtifactClient()
     artifactClient.uploadArtifact(artifactName, [tmpFile.name], '.', {
       retentionDays: 1
